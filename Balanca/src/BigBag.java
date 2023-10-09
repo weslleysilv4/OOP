@@ -9,6 +9,6 @@ public class BigBag {
     }
 
     public void setPesoBigBag(int pesoBigBag) {
-        this.pesoBigBag = pesoBigBag;
+        this.pesoBigBag = this.pesoBigBag * pesoBigBag;
     }
 }

@@ -9,6 +9,6 @@ public class Pallets {
     }
 
     public void setPesoPallets(int pesoPallets) {
-        this.pesoPallets = pesoPallets;
+        this.pesoPallets = this.pesoPallets * pesoPallets;
     }
 }

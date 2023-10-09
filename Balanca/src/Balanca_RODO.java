@@ -1,52 +1,55 @@
-public class Balanca_RODO extends Balanca implements Calc{
-    private int pesagemId;
-    private int pesoInicial;
-    private int pesoFinal;
+import java.util.ArrayList;
 
-    public int getPesoInicial() {
-        return pesoInicial;
-    }
-
-    public void setPesoInicial(int pesoInicial) {
-        this.pesoInicial = pesoInicial;
-    }
-
-    public int getPesoFinal() {
-        return pesoFinal;
-    }
-
-    public void setPesoFinal(int pesoFinal) {
-        this.pesoFinal = pesoFinal;
-    }
+public class Balanca_RODO extends Balanca implements setIds{
+    private ArrayList<Integer> pesagem_ID = new ArrayList<Integer>();
+    private Veiculo veiculo = new Veiculo();
+    private  BigBag bigBag = new BigBag();
+    private  Pallets pallets = new Pallets();
     public Balanca_RODO(){
         // Atributos Balanca
+        setPesoInicial(0);
+        setPesoFinal(0);
         setPesoTara(0);
         setPesoBruto(0);
         setPesoLiquido(0);
 
         // Atributos Veiculo
-        getVeiculo().setPesoTaraVeiculo(0);
-        getVeiculo().setNomeMotorista("");
-        getVeiculo().setPlacaCavalo("");
-
-        // Atributos Balanca_RODO
-        setPesoInicial(0);
-        setPesoFinal(0);
+        veiculo.setPesoTaraVeiculo(0);
+        veiculo.setNomeMotorista("");
+        veiculo.setPlacaCavalo("");
 
         // Atributos BigBag
-        getBigBag().setPesoBigBag(2);
+        bigBag.setPesoBigBag(2);
 
         // Atributos Pallets
-        getPallets().setPesoPallets(27);
-    }
-    public int calcPeso(){
-        int pesoBruto = getPesoFinal() - getPesoInicial();
-        return pesoBruto - getPallets().getPesoPallets() - getBigBag().getPesoBigBag();
+        pallets.setPesoPallets(27);
     }
 
-    @Override
-    public int Calc() {
-        int pesoCarro = getVeiculo().getPesoTaraVeiculo();
-        return pesoCarro - getPesoLiquido();
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public BigBag getBigBag() {
+        return bigBag;
+    }
+
+    public Pallets getPallets() {
+        return pallets;
+    }
+
+    public int calcPeso(){
+        int pesoBruto = getPesoInicial() - getPesoFinal();
+        if(getPesoInicial() > getPesoFinal()){
+            System.out.println("\n *** Operacao de Descarregamento ***");
+        } else {
+            System.out.println("\n *** Operacao de Carregamento ***");
+        }
+        return pesoBruto - pallets.getPesoPallets() - bigBag.getPesoBigBag();
+    }
+    public void setId(){
+        for (Integer i: pesagem_ID) {
+            pesagem_ID.add(i+1);
+            System.out.println("\n *** Pesagem ID: "+ i +" ***");
+        }
     }
 }

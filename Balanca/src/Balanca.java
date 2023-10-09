@@ -1,15 +1,34 @@
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public abstract class Balanca {
+    private int pesoInicial;
+    private int pesoFinal;
     private int pesoTara;
     private int pesoBruto;
     private int pesoLiquido;
-    private String dataPesagem = String.valueOf(new GregorianCalendar());
-    private Veiculo veiculo = new Veiculo();
-    private BigBag bigBag = new BigBag();
-    private Pallets pallets = new Pallets();
+    private String dataPesagem;
+    private Calendar calendario = new GregorianCalendar();
 
+    //Abstract methodd
     public abstract int calcPeso();
+
+    //Getters and Setters
+    public int getPesoInicial() {
+        return pesoInicial;
+    }
+
+    public void setPesoInicial(int pesoInicial) {
+        this.pesoInicial = pesoInicial;
+    }
+
+    public int getPesoFinal() {
+        return pesoFinal;
+    }
+
+    public void setPesoFinal(int pesoFinal) {
+        this.pesoFinal = pesoFinal;
+    }
 
     public int getPesoTara() {
         return pesoTara;
@@ -39,31 +58,10 @@ public abstract class Balanca {
         return dataPesagem;
     }
 
-    public void setDataPesagem(String dataPesagem) {
-        this.dataPesagem = dataPesagem;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public BigBag getBigBag() {
-        return bigBag;
-    }
-
-    public void setBigBag(BigBag bigBag) {
-        this.bigBag = bigBag;
-    }
-
-    public Pallets getPallets() {
-        return pallets;
-    }
-
-    public void setPallets(Pallets pallets) {
-        this.pallets = pallets;
+    public void setDataPesagem() {
+        dataPesagem = calendario.get(Calendar.DAY_OF_MONTH) +
+                "/" + calendario.get(Calendar.MONTH) +
+                "/" + calendario.get(Calendar.YEAR);
     }
 }
+
