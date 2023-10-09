@@ -1,7 +1,8 @@
+//Discente: Weslley Silva - RA:2410257
 public class Animal {
     private String nomeAnimal;
     private String especieAnimal;
-    int idadeAnimal;
+    private int idadeAnimal;
 
     public Animal() {
         setNomeAnimal("");

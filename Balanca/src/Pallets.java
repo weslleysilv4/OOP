@@ -1,3 +1,4 @@
+//Discente: Weslley Silva - RA:2410257
 public class Pallets {
     private int pesoPallets;
 
@@ -9,6 +10,6 @@ public class Pallets {
     }
 
     public void setPesoPallets(int pesoPallets) {
-        this.pesoPallets = this.pesoPallets * pesoPallets;
+        this.pesoPallets *= pesoPallets;
     }
 }

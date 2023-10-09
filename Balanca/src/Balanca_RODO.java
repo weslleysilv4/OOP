@@ -1,30 +1,29 @@
-import java.util.ArrayList;
+//Discente: Weslley Silva - RA:2410257
+public class Balanca_RODO extends Balanca implements setIds {
+    private static int nextPesagemID = 1; // Variável estática para gerar IDs únicos
+    private int pesagemID; // ID da pesagem atual
+    private final Veiculo veiculo = new Veiculo();
+    private final BigBag bigBag = new BigBag();
+    private final Pallets pallets = new Pallets();
 
-public class Balanca_RODO extends Balanca implements setIds{
-    private ArrayList<Integer> pesagem_ID = new ArrayList<Integer>();
-    private Veiculo veiculo = new Veiculo();
-    private  BigBag bigBag = new BigBag();
-    private  Pallets pallets = new Pallets();
-    public Balanca_RODO(){
+    public Balanca_RODO() {
         // Atributos Balanca
         setPesoInicial(0);
         setPesoFinal(0);
-        setPesoTara(0);
-        setPesoBruto(0);
         setPesoLiquido(0);
 
         // Atributos Veiculo
-        veiculo.setPesoTaraVeiculo(0);
         veiculo.setNomeMotorista("");
+        veiculo.setNomeTransportadora("");
         veiculo.setPlacaCavalo("");
 
-        // Atributos BigBag
-        bigBag.setPesoBigBag(2);
-
-        // Atributos Pallets
-        pallets.setPesoPallets(27);
+        // Define o ID da pesagem atual
+        pesagemID = 0;
     }
 
+    public void setId(){
+        pesagemID = nextPesagemID++;
+    }
     public Veiculo getVeiculo() {
         return veiculo;
     }
@@ -37,19 +36,20 @@ public class Balanca_RODO extends Balanca implements setIds{
         return pallets;
     }
 
-    public int calcPeso(){
-        int pesoBruto = getPesoInicial() - getPesoFinal();
-        if(getPesoInicial() > getPesoFinal()){
+    public int calcPeso() {
+        int pesoLiquido;
+        if (getPesoInicial() > getPesoFinal()) {
             System.out.println("\n *** Operacao de Descarregamento ***");
+            pesoLiquido = (getPesoInicial() - getPesoFinal()) - pallets.getPesoPallets() - bigBag.getPesoBigBag();
         } else {
             System.out.println("\n *** Operacao de Carregamento ***");
+            pesoLiquido = (getPesoFinal() - getPesoInicial()) - pallets.getPesoPallets() - bigBag.getPesoBigBag();
         }
-        return pesoBruto - pallets.getPesoPallets() - bigBag.getPesoBigBag();
+        return pesoLiquido;
     }
-    public void setId(){
-        for (Integer i: pesagem_ID) {
-            pesagem_ID.add(i+1);
-            System.out.println("\n *** Pesagem ID: "+ i +" ***");
-        }
+
+    public int getPesagemID() {
+        return pesagemID;
     }
 }
+

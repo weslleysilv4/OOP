@@ -1,36 +1,41 @@
-import java.util.ArrayList;
+//Discente: Weslley Silva - RA:2410257
 
 public class Balanca_Animal extends Balanca implements setIds {
-    private ArrayList<Integer> pesagem_ID = new ArrayList<Integer>();
-    private Animal animal;
+    private static int nextPesagemID = 1; // Variável estática para gerar IDs únicos
+    private int pesagemID; // ID da pesagem atual
+    private Animal animal = new Animal();
 
     public Balanca_Animal(){
         // Atributos Balanca
         setPesoInicial(0);
         setPesoFinal(0);
-        setPesoTara(0);
-        setPesoBruto(0);
         setPesoLiquido(0);
 
         // Atributos Animal
         animal.setNomeAnimal("");
         animal.setEspecieAnimal("");
         animal.setIdadeAnimal(0);
-    }
 
-    public void setId(){
-        for (Integer i: pesagem_ID) {
-            pesagem_ID.add(i+1);
-            System.out.println("\n *** Pesagem ID: "+ i +" ***");
-        }
+        pesagemID = 0;
     }
-    public int calcPeso(){
-        int pesoBruto = getPesoInicial() - getPesoFinal();
-        if(getPesoInicial() > getPesoFinal()){
-            System.out.println("\n *** Animal Emagreceu "+ pesoBruto +" ***");
+    public Animal getAnimal(){
+        return animal;
+    }
+    public void setId(){
+        pesagemID = nextPesagemID++;
+    }
+    public int getPesagemID(){
+        return pesagemID;
+    }
+    public int calcPeso() {
+        int pesoLiquido;
+        if (getPesoInicial() > getPesoFinal()) {
+            System.out.println("\n *** Ocorreu Emagrecimento do Animal ***");
+            pesoLiquido = (getPesoInicial() - getPesoFinal());
         } else {
-            System.out.println("\n *** Animal Engordou "+ pesoBruto +" ***");
+            System.out.println("\n *** Ocorreu Enrgoda no Animal ***");
+            pesoLiquido = (getPesoFinal() - getPesoInicial());
         }
-        return pesoBruto;
+        return pesoLiquido;
     }
 }

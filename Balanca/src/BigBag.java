@@ -1,3 +1,4 @@
+//Discente: Weslley Silva - RA:2410257
 public class BigBag {
     private int pesoBigBag;
 
@@ -9,6 +10,6 @@ public class BigBag {
     }
 
     public void setPesoBigBag(int pesoBigBag) {
-        this.pesoBigBag = this.pesoBigBag * pesoBigBag;
+        this.pesoBigBag *= pesoBigBag;
     }
 }

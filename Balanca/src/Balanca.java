@@ -1,11 +1,11 @@
+//Discente: Weslley Silva - RA:2410257
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public abstract class Balanca {
     private int pesoInicial;
     private int pesoFinal;
-    private int pesoTara;
-    private int pesoBruto;
     private int pesoLiquido;
     private String dataPesagem;
     private Calendar calendario = new GregorianCalendar();
@@ -28,22 +28,6 @@ public abstract class Balanca {
 
     public void setPesoFinal(int pesoFinal) {
         this.pesoFinal = pesoFinal;
-    }
-
-    public int getPesoTara() {
-        return pesoTara;
-    }
-
-    public void setPesoTara(int pesoTara) {
-        this.pesoTara = pesoTara;
-    }
-
-    public int getPesoBruto() {
-        return pesoBruto;
-    }
-
-    public void setPesoBruto(int pesoBruto) {
-        this.pesoBruto = pesoBruto;
     }
 
     public int getPesoLiquido() {

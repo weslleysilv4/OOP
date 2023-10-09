@@ -1,11 +1,12 @@
+//Discente: Weslley Silva - RA:2410257
 public class Veiculo {
     private String placaCavalo;
-    private int pesoTaraVeiculo;
+    private String nomeTransportadora;
     private String nomeMotorista;
 
     public Veiculo(){
         placaCavalo = "";
-        pesoTaraVeiculo = 0;
+        nomeTransportadora = "";
         nomeMotorista = "";
     }
     public String getPlacaCavalo() {
@@ -15,12 +16,12 @@ public class Veiculo {
         this.placaCavalo = placaCavalo;
     }
 
-    public int getPesoTaraVeiculo() {
-        return pesoTaraVeiculo;
+    public String getNomeTransportadora() {
+        return nomeTransportadora;
     }
 
-    public void setPesoTaraVeiculo(int pesoTaraVeiculo) {
-        this.pesoTaraVeiculo = pesoTaraVeiculo;
+    public void setNomeTransportadora(String nomeTransportadora) {
+        this.nomeTransportadora = nomeTransportadora;
     }
 
     public String getNomeMotorista() {
